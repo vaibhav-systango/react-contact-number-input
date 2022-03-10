@@ -11,6 +11,10 @@
     "clean": "rimraf dist",
     "compile": "npm run clean && cross-env NODE_ENV=production babel src/Components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaibhav-systango/react-contact-number-input"
+  },
   "keywords": [
     "phone","number","contact","international","input","react","js"
   ],
