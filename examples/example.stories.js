@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Story } from "@storybook/react";
-import {PhoneInput} from '../Components';
+import {PhoneInput} from '../src/Components';
 export default {
     title: "Phone Number Input",
     component: PhoneInput,

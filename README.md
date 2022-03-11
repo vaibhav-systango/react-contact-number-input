@@ -18,12 +18,7 @@ npm install react-contact-number-input
 
 👤 **vaibhav-systango**
 
-<!-- ## Show your support
 
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_ -->
 
 ## Usage
 
@@ -41,7 +36,7 @@ import { PhoneInput } from "react-contact-number-input";
   placeholder={placeholder}
 />;
 ```
-
+#### [Demo ] (https://react-contact-number-input.web.app/)
 ### Component Props
 
 | Name           | Type    | Description                                                                         |
