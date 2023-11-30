@@ -9,6 +9,7 @@ const PhoneInput = ({
   disabled,
   containerClass,
   placeholder,
+  onBlur,
 }) => {
   const [currentCountryCode] = useState(countryCode || "us");
   const [value, setValue] = useState({
@@ -74,6 +75,7 @@ const PhoneInput = ({
       containerClass={containerClass}
       countryCode={currentCountryCode}
       handleOnChange={handlePhoneOnChange}
+      handleOnBlur={onBlur}
       placeholder={placeholder}
     />
   );
@@ -82,7 +84,8 @@ PhoneInput.propTypes = {
   onChange: PropTypes.func,
   countryCode: PropTypes.string,
   disabled: PropTypes.bool,
-  containerClass:PropTypes.string,
-  placeholder:PropTypes.string,
+  containerClass: PropTypes.string,
+  placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
 };
 export default PhoneInput;
