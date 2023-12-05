@@ -11,12 +11,25 @@ const PhoneInput = ({
   placeholder,
   onBlur,
 }) => {
-  const [currentCountryCode] = useState(countryCode || "us");
+  const [currentCountryCode, setCurrencyCountryCode] = useState(
+    countryCode || "us"
+  );
   const [value, setValue] = useState({
     phoneNumber: null,
     countryCode: countryCode || null,
     countryData: null,
   });
+
+  const fetchAndManageUserCountryCode = async () => {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res?.json();
+    const userCountryCode = data?.country_code?.toLowerCase();
+    setCurrencyCountryCode(userCountryCode || "us");
+  };
+
+  useEffect(() => {
+    fetchAndManageUserCountryCode();
+  }, []);
 
   useEffect(() => {
     if (onChange) {
