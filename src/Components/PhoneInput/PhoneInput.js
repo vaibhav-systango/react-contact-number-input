@@ -9,13 +9,27 @@ const PhoneInput = ({
   disabled,
   containerClass,
   placeholder,
+  onBlur,
 }) => {
-  const [currentCountryCode] = useState(countryCode || "us");
+  const [currentCountryCode, setCurrencyCountryCode] = useState(
+    countryCode || "us"
+  );
   const [value, setValue] = useState({
     phoneNumber: null,
     countryCode: countryCode || null,
     countryData: null,
   });
+
+  const fetchAndManageUserCountryCode = async () => {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res?.json();
+    const userCountryCode = data?.country_code?.toLowerCase();
+    setCurrencyCountryCode(userCountryCode || "us");
+  };
+
+  useEffect(() => {
+    fetchAndManageUserCountryCode();
+  }, []);
 
   useEffect(() => {
     if (onChange) {
@@ -74,6 +88,7 @@ const PhoneInput = ({
       containerClass={containerClass}
       countryCode={currentCountryCode}
       handleOnChange={handlePhoneOnChange}
+      handleOnBlur={onBlur}
       placeholder={placeholder}
     />
   );
@@ -82,7 +97,8 @@ PhoneInput.propTypes = {
   onChange: PropTypes.func,
   countryCode: PropTypes.string,
   disabled: PropTypes.bool,
-  containerClass:PropTypes.string,
-  placeholder:PropTypes.string,
+  containerClass: PropTypes.string,
+  placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
 };
 export default PhoneInput;
